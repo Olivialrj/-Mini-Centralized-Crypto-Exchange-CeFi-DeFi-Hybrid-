@@ -1,0 +1,9 @@
+vendor/normalize.css
+
+.prettierrc
+{
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "es5"
+}
