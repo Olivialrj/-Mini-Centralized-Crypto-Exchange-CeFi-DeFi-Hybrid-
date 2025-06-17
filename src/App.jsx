@@ -8,7 +8,7 @@ import {
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import "./App.css"; // Import your CSS file for styling
 import "./index.css";
-import Dashboard from "./pages/Dashboard";
+import DashboardPage from "./pages/DashboardPage";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import HomePage from "./pages/HomePage";
@@ -35,7 +35,7 @@ export default function App() {
               </ProtectedRoute>
             }
           /> */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           {/* Optional: Redirect unknown routes */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
