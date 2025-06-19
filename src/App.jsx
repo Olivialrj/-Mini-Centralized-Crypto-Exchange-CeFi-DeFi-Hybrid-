@@ -8,10 +8,10 @@ import {
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import "./App.css"; // Import your CSS file for styling
 import "./index.css";
-import DashboardPage from "./pages/DashboardPage";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import HomePage from "./pages/HomePage";
+import DashboardHome from "./pages/DashboardHome";
 
 // ProtectedRoute wrapper
 function ProtectedRoute({ children }) {
@@ -35,7 +35,7 @@ export default function App() {
               </ProtectedRoute>
             }
           /> */}
-          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<DashboardHome />} />
           {/* Optional: Redirect unknown routes */}
           <Route path="*" element={<Navigate to="/login" />} />
         </Routes>
