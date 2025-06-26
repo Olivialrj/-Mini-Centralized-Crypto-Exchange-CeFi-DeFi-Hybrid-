@@ -41,7 +41,7 @@ function SortableCoin({ coin }) {
       ref={setNodeRef}
       {...attributes}
       style={style}
-      className={`w-48 min-w-[16rem] min-h-[12rem] p-4 bg-gray-800 rounded-md shadow-md text-white flex flex-col items-center justify-center select-none
+      className={`w-44 min-w-[16rem] min-h-[11rem] p-4 bg-gray-800 rounded-md shadow-md text-white flex flex-col items-center justify-center select-none
         ${isDragging ? "opacity-80" : "opacity-100"} 
         hover:shadow-lg hover:border-purple-500 border border-transparent transition-all relative`}
     >

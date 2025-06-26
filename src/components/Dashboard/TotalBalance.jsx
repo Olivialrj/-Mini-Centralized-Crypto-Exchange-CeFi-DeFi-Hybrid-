@@ -60,63 +60,65 @@ const TotalBalance = () => {
   const gain = diff >= 0;
 
   return (
-    <section className="bg-gray-800 rounded-xl p-6 shadow-md w-full max-w-md mx-auto">
-      <h2 className="text-lg text-gray-400">Total Balance</h2>
-      <p className="text-3xl font-bold mt-2 text-white">
-        ${lastBalance.toLocaleString()}
-      </p>
+    <section className="flex-1 self-center">
+      <div className="bg-gray-800 rounded-xl p-6 shadow-md">
+        <h2 className="text-lg text-gray-400">Total Balance</h2>
+        <p className="text-3xl font-bold mt-2 text-white">
+          ${lastBalance.toLocaleString()}
+        </p>
 
-      <div className="flex gap-2 my-4">
-        {timeframes.map((tf) => (
-          <button
-            key={tf}
-            className={`px-3 py-1 rounded-md text-sm font-medium transition ${
-              selectedTimeframe === tf
-                ? "bg-purple-600 text-white"
-                : "bg-gray-700 text-gray-300 hover:bg-gray-600"
-            }`}
-            onClick={() => setSelectedTimeframe(tf)}
-          >
-            {tf}
-          </button>
-        ))}
+        <div className="flex gap-2 my-4">
+          {timeframes.map((tf) => (
+            <button
+              key={tf}
+              className={`px-3 py-1 rounded-md text-sm font-medium transition ${
+                selectedTimeframe === tf
+                  ? "bg-purple-600 text-white"
+                  : "bg-gray-700 text-gray-300 hover:bg-gray-600"
+              }`}
+              onClick={() => setSelectedTimeframe(tf)}
+            >
+              {tf}
+            </button>
+          ))}
+        </div>
+
+        <div className="h-40">
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart data={data}>
+              <XAxis dataKey="time" stroke="#aaa" />
+              <YAxis stroke="#aaa" domain={["auto", "auto"]} />
+              <Tooltip
+                contentStyle={{ backgroundColor: "#1f2937", border: "none" }}
+              />
+              <Line
+                type="monotone"
+                dataKey="balance"
+                stroke={gain ? "#22c55e" : "#ef4444"} // green or red
+                strokeWidth={2}
+                dot={false}
+                activeDot={{ r: 6 }}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
+
+        <p
+          className={`mt-2 font-semibold ${
+            gain ? "text-green-400" : "text-red-400"
+          }`}
+        >
+          {gain ? "+" : ""}
+          {diff.toLocaleString(undefined, {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}{" "}
+          USD
+        </p>
+        <p className="text-gray-500 text-sm">
+          {gain ? "Gained" : "Lost"} in the last {selectedTimeframe}
+        </p>
       </div>
-
-      <div className="h-40">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <XAxis dataKey="time" stroke="#aaa" />
-            <YAxis stroke="#aaa" domain={["auto", "auto"]} />
-            <Tooltip
-              contentStyle={{ backgroundColor: "#1f2937", border: "none" }}
-            />
-            <Line
-              type="monotone"
-              dataKey="balance"
-              stroke={gain ? "#22c55e" : "#ef4444"} // green or red
-              strokeWidth={2}
-              dot={false}
-              activeDot={{ r: 6 }}
-            />
-          </LineChart>
-        </ResponsiveContainer>
-      </div>
-
-      <p
-        className={`mt-2 font-semibold ${
-          gain ? "text-green-400" : "text-red-400"
-        }`}
-      >
-        {gain ? "+" : ""}
-        {diff.toLocaleString(undefined, {
-          minimumFractionDigits: 2,
-          maximumFractionDigits: 2,
-        })}{" "}
-        USD
-      </p>
-      <p className="text-gray-500 text-sm">
-        {gain ? "Gained" : "Lost"} in the last {selectedTimeframe}
-      </p>
     </section>
   );
 };

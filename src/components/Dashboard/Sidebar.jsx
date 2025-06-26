@@ -1,23 +1,30 @@
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <aside className="w-64 bg-gray-800 p-6 hidden md:block">
       <h2 className="text-2xl font-bold mb-8">MiniExchange</h2>
-      <nav className="space-y-4">
-        <a href="#" className="block hover:text-purple-400">
+      <nav className="flex flex-col space-y-4">
+        <Link className="hover:text-purple-400 transition" to="/dashboard">
           Dashboard
-        </a>
-        <a href="#" className="block hover:text-purple-400">
+        </Link>
+        <Link
+          to="/dashboard/wallet"
+          className="hover:text-purple-400 transition"
+        >
           Wallet
-        </a>
-        <a href="#" className="block hover:text-purple-400">
+        </Link>
+        <Link
+          className="hover:text-purple-400 transition"
+          to="/dashboard/portfolio"
+        >
           Trade
-        </a>
-        <a href="#" className="block hover:text-purple-400">
+        </Link>
+        <Link
+          className="hover:text-purple-400 transition"
+          to="/dashboard/portfolio"
+        >
           Portfolio
-        </a>
-        <a href="#" className="block hover:text-purple-400">
-          Settings
-        </a>
+        </Link>
       </nav>
     </aside>
   );
